@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 AI Document Summarizer</h1>
+            <p>Upload PDF, DOCX, or TXT files to generate AI-powered summaries, keywords, and assessment questions</p>
+        </header>
+
+        <div class="upload-section">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="file-drop-area">
+                    <span class="choose-file-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Choose File
+                    </span>
+                    <span class="file-message">or drag & drop your file here</span>
+                    <input type="file" class="file-input" id="fileInput" accept=".pdf,.docx,.txt">
+                </div>
+                <button type="submit" id="analyzeBtn">🚀 Analyze Document</button>
+            </form>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loader" class="loader hidden"></div>
+
+        <!-- Results Section -->
+        <div id="results" class="results-container hidden">
+            <div class="card summary-card">
+                <h2>📋 Executive Summary</h2>
+                <div id="summaryText" class="summary-content">Upload a document to see the AI-generated summary...</div>
+            </div>
+
+            <div class="card">
+                <h2>🔑 Key Topics</h2>
+                <div id="keywordsContainer" class="tags-container">
+                    <!-- Keywords will appear here -->
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>❓ Assessment Questions</h2>
+                <ul id="questionsList" class="questions-list">
+                    <!-- Questions will appear here -->
+                </ul>
+            </div>
+
+            <div class="stats">
+                <p><strong>Total Words:</strong> <span id="wordCount">0</span></p>
+            </div>
+        </div>
+    </div>
+   <!-- ADD THIS after the Assessment Questions card -->
+<div class="card">
+    <h2>📝 AI MCQ Quiz</h2>
+    <div id="mcqSection">
+        <p style="color: var(--text-light);">Upload a document to generate interactive MCQs...</p>
+    </div>
+</div>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
